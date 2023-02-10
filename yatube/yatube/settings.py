@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "4nt0&l0zan7w@u(cl55n_j4#p*py%m#t49*8c%0w^4+*((*-my"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -19,6 +19,8 @@ ALLOWED_HOSTS = [
     "testserver",
     "www.lemegeton.pythonanywhere.com",
     "lemegeton.pythonanywhere.com",
+    "yatube.onrender.com",
+    "www.yatube.onrender.com",
 ]
 
 
