@@ -12,7 +12,7 @@
           <a href="{% url 'posts:profile' username=author.username %}">Всего постов</a>
           <span class="badge bg-primary rounded-pill">{{ total_posts }}</span>
       </li>
-      {% if user != request.user %}
+      {% if request.user != author %}
       {% if following %}
       <a
         class="btn btn-lg btn-light"

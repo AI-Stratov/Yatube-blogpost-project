@@ -36,13 +36,8 @@ def profile(request, username):
     posts = Post.objects.filter(author__username=username)
     total_posts = posts.count()
     page_obj = paginate_posts(request, posts, settings.POSTS_PER_PAGE)
-    if request.user.is_authenticated and request.user != author:
-        following = Follow.objects.filter(
-            user__username=request.user,
-            author=author
-        ).exists()
-    else:
-        following = False
+    following = request.user.is_authenticated and author.following.filter(
+        user=request.user).exists()
     context = {
         "total_posts": total_posts,
         "author": author,
@@ -54,13 +49,13 @@ def profile(request, username):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
+    author = post.author
     form = CommentForm()
     comments = post.comments.select_related('author').all()
     total_posts = Post.objects.filter(author=post.author).count()
-    following = Follow.objects.filter(
-        user__username=request.user,
-        author=post.author
-    )
+    following = request.user.is_authenticated and author.following.filter(
+        user=request.user
+    ).exists()
     context = {
         "author": post.author,
         "post": post,
@@ -131,11 +126,16 @@ def follow_index(request):
 @login_required
 def profile_follow(request, username):
     author = get_object_or_404(User, username=username)
-    if request.user != author:
-        Follow.objects.get_or_create(
+    following = Follow.objects.filter(
+        author=author,
+        user=request.user
+    ).exists()
+    if request.user != author and not following:
+        follow = Follow.objects.create(
             user=request.user,
             author=author
         )
+        follow.save()
     return redirect('posts:profile', username)
 
 
