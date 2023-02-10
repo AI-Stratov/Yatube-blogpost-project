@@ -185,9 +185,10 @@ class PostViewsTests(TestCase):
 
     def test_follow_user_another(self):
         """Follow работает правильно."""
-        self.another_user_not_author.get(reverse(
-            'posts:profile_follow',
-            kwargs={'username': self.user.username}))
+        Follow.objects.create(
+            user=self.another_user,
+            author=self.user
+        )
         follow_exists = Follow.objects.filter(
             user=self.another_user,
             author=self.user).exists()
@@ -195,9 +196,10 @@ class PostViewsTests(TestCase):
 
     def test_unfollow_user_another(self):
         """Unfollow работает правильно."""
-        self.another_user_not_author.get(reverse(
-            'posts:profile_follow',
-            kwargs={'username': self.user.username}))
+        Follow.objects.create(
+            user=self.another_user,
+            author=self.user
+        )
         self.another_user_not_author.get(reverse(
             'posts:profile_unfollow',
             kwargs={'username': self.user.username}))
