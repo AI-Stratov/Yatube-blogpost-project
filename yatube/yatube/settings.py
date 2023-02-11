@@ -9,6 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "4nt0&l0zan7w@u(cl55n_j4#p*py%m#t49*8c%0w^4+*((*-my"
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -27,16 +28,16 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "posts.apps.PostsConfig",
+    "users.apps.UsersConfig",
+    "core.apps.CoreConfig",
+    "about.apps.AboutConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "posts.apps.PostsConfig",
-    "users.apps.UsersConfig",
-    "core.apps.CoreConfig",
-    "about.apps.AboutConfig",
     "sorl.thumbnail",
 ]
 
