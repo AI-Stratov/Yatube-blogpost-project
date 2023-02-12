@@ -1,21 +1,21 @@
 <aside class="col-md-3 mb-3 mt-1">
   <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center">
-          <a>Автор:</a>
-          <a href="{% url 'posts:profile' author %}">{{ author.username }}</a>
+          <a style='color: #33C1B1'>Автор:</a>
+          <a href="{% url 'posts:profile' author %}" style='color: #FFEEDB'>{{ author.username }}</a>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
-          <a>Полное имя:</a>
-          <a>{{ author.get_full_name }}</a>
+        <a style='color: #33C1B1'>Полное имя:</a>
+          <a style='color: #FFEEDB'>{{ author.get_full_name }}</a>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
-          <a href="{% url 'posts:profile' username=author.username %}">Всего постов</a>
+        <a style='color: #33C1B1'>Всего постов</a>
           <span class="badge bg-primary rounded-pill">{{ total_posts }}</span>
       </li>
       {% if request.user != author %}
       {% if following %}
       <a
-        class="btn btn-lg btn-light"
+        class="btn btn-lg btn-primary"
         href="{% url 'posts:profile_unfollow' author.username %}" role="button"
       >Отписаться
       </a>

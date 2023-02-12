@@ -4,15 +4,14 @@
 {% block title %}Последние обновления на сайте{% endblock title %}
 {% block content %}
     <main>
-        {% include 'posts/includes/switcher.html' %}
-        <div class="container py-5">
-            <h1>Последние обновления на сайте</h1>
+        <h2>Последние обновления на сайте</h2>
+        <div class="container">
+            {% include 'posts/includes/switcher.html' %}
             {% for post in page_obj %}
                 {% include "posts/includes/post_item.html" with post=post %}
                 {% if not forloop.last %}<hr>{% endif %}
             {% endfor %}
-        </div>
-        {% include 'posts/includes/paginator.html' %}
+            {% include 'posts/includes/paginator.html' %}
         </div>
     </main>
 {% endblock content %}

@@ -11,7 +11,7 @@ SECRET_KEY = "4nt0&l0zan7w@u(cl55n_j4#p*py%m#t49*8c%0w^4+*((*-my"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -131,7 +131,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATIC_URL = "/static/"
+STATIC_URL = "/yatube/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
